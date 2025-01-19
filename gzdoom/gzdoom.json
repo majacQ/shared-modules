@@ -2,7 +2,7 @@
     "name": "gzdoom",
     "buildsystem": "cmake-ninja",
     "config-opts": [
-        "-DCMAKE_BUILD_TYPE=RelWithDebInfo"
+        "-DCMAKE_BUILD_TYPE=Release"
     ],
     "cleanup": [
         "/lib/*.a",
@@ -14,8 +14,8 @@
         {
             "type": "git",
             "url": "https://github.com/zdoom/gzdoom.git",
-            "tag": "g4.12.2",
-            "commit": "71c40432e5e893c629a1c9c76a523a0ab22bd56a",
+            "tag": "g4.14.0",
+            "commit": "25ec8a689d5654a7f57869e09c0ce0d0892ba6a4",
             "x-checker-data": {
                 "type": "anitya",
                 "project-id": 17531,
@@ -26,6 +26,12 @@
         {
             "type": "patch",
             "path": "description.patch"
+        },
+        {
+            "type": "shell",
+            "commands": [
+                "sed -i \"s/org.zdoom.GZDoom/${FLATPAK_ID}/g\" src/d_iwad.cpp"
+            ]            
         }
     ],
     "modules": [
